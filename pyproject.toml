@@ -1,0 +1,10 @@
+[project]
+name = "create-work-items"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fire>=0.7.0",
+    "pyyaml>=6.0.2",
+]

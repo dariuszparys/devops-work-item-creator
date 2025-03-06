@@ -1,0 +1,11 @@
+epics:
+  - title: "Epic 1: Improve Product Performance"
+    features:
+      - title: "Feature 1: Optimize Database Queries"
+        items:
+          - title: "Item 1: Add Indexing to User Table"
+          - title: "Item 2: Optimize Query Caching"
+      - title: "Feature 2: Refactor UI Components"
+        items:
+          - title: "Item 1: Implement Component Library"
+          - title: "Item 2: Audit Legacy Code"
