@@ -13,7 +13,7 @@ def setup_logging(log_level=logging.INFO):
         format=log_format,
         handlers=[
             logging.StreamHandler(),  # Console handler
-            logging.FileHandler(os.path.join(os.path.dirname(__file__), 'azure_devops.log'))  # File handler
+            logging.FileHandler(os.path.join(os.path.dirname(__file__), 'devops.log'))  # File handler
         ]
     )
     return logging.getLogger(__name__)
@@ -21,7 +21,7 @@ def setup_logging(log_level=logging.INFO):
 # Initialize logger
 logger = setup_logging()
 
-class AzureWorkItems:
+class DevOpsWorkItems:
     """Create and manage Azure DevOps work items from YAML definitions.
     
     This tool allows you to create and delete work items in Azure DevOps
@@ -30,7 +30,7 @@ class AzureWorkItems:
     """
     
     def __init__(self, debug=False):
-        """Initialize the AzureWorkItems tool.
+        """Initialize the DevOpsWorkItems tool.
         
         Args:
             debug (bool): Enable debug logging
@@ -288,7 +288,7 @@ class AzureWorkItems:
 
 def main():
     """Main entry point for the script."""
-    fire.Fire(AzureWorkItems)
+    fire.Fire(DevOpsWorkItems)
 
 if __name__ == "__main__":
     main()

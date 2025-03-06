@@ -1,4 +1,4 @@
-# Azure Work Items
+# DevOps Work Items
 
 A command-line tool for creating and managing Azure DevOps work items from YAML definitions.
 
@@ -44,7 +44,7 @@ This tool allows you to define a hierarchy of work items (Epics, Features, and P
 To create work items defined in a YAML file:
 
 ```bash
-python azure_work_items.py create [yaml_file]
+python devops_work_items.py create [yaml_file]
 ```
 
 If no YAML file is specified, it defaults to `input.yaml`.
@@ -54,7 +54,7 @@ If no YAML file is specified, it defaults to `input.yaml`.
 To delete work items that were previously created:
 
 ```bash
-python azure_work_items.py delete [yaml_file]
+python devops_work_items.py delete [yaml_file]
 ```
 
 This will first try to delete items based on the saved `created_items.yaml` file. If that file doesn't exist, it will search for items by title in Azure DevOps.
@@ -64,7 +64,7 @@ This will first try to delete items based on the saved `created_items.yaml` file
 To enable debug logging:
 
 ```bash
-python azure_work_items.py --debug create [yaml_file]
+python devops_work_items.py --debug create [yaml_file]
 ```
 
 ## YAML File Format
@@ -85,16 +85,35 @@ epics:
           - title: "Item 2: Audit Legacy Code"
 ```
 
+## Work Item Types in Azure DevOps
+
+This tool is configured to work with the following work item types:
+
+- **Epic**: Top-level work item representing a large body of work
+- **Feature**: Mid-level work item representing a feature of the product
+- **Product Backlog Item**: Lowest-level work item representing a specific piece of work
+
+Different Azure DevOps process templates use different names for these work item types:
+
+| Process Template | Top Level | Mid Level | Lowest Level |
+|------------------|-----------|-----------|--------------|
+| Scrum            | Epic      | Feature   | Product Backlog Item |
+| Agile            | Epic      | Feature   | User Story |
+| Basic            | Epic      | Issue     | Issue |
+| CMMI             | Epic      | Feature   | Requirement |
+
+If your Azure DevOps project uses a different process template, you may need to modify the code in `devops_work_items.py` to use the correct work item types. Look for instances of `"Product Backlog Item"` in the code and replace them with the appropriate work item type for your project (e.g., `"User Story"` for Agile projects).
+
 ## Files Created by the Application
 
 - **created_items.yaml**: Stores information about created work items for later deletion
-- **azure_devops.log**: Log file containing execution details
+- **devops.log**: Log file containing execution details
 
 ## Troubleshooting
 
 - If you encounter authentication issues, ensure you're logged in with `az login`
 - If work item creation fails, check that your Azure DevOps project uses the expected work item types (Epic, Feature, Product Backlog Item)
-- For detailed logs, check the `azure_devops.log` file or run with the `--debug` flag
+- For detailed logs, check the `devops.log` file or run with the `--debug` flag
 
 ## Contributing
 
