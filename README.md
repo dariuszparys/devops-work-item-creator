@@ -23,18 +23,14 @@ This tool allows you to define a hierarchy of work items (Epics, Features, and P
 
 ## Installation
 
-1. Clone this repository:
-   ```bash
-   git clone <repository-url>
-   cd azure-work-items
-   ```
-
-2. Install dependencies:
+1. Install dependencies:
    ```bash
    pip install pyyaml fire
    ```
 
-3. Ensure Azure CLI is installed and authenticated:
+   as this was created using `uv` you can also `uv sync`
+
+2. Ensure Azure CLI is installed and authenticated:
    ```bash
    az login
    az extension add --name azure-devops
